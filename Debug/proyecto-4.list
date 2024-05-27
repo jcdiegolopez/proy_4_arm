@@ -27,13 +27,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  00002004  2**0
                   CONTENTS, READONLY
- 12 .debug_line   00000131  00000000  00000000  00002034  2**0
+ 12 .debug_line   00000132  00000000  00000000  00002034  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_line_str 0000006f  00000000  00000000  00002165  2**0
+ 13 .debug_line_str 0000006f  00000000  00000000  00002166  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_info   00000055  00000000  00000000  000021d4  2**0
+ 14 .debug_info   00000055  00000000  00000000  000021d5  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_abbrev 00000038  00000000  00000000  00002229  2**0
+ 15 .debug_abbrev 00000038  00000000  00000000  0000222a  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
  16 .debug_aranges 00000048  00000000  00000000  00002268  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
@@ -77,66 +77,66 @@ Disassembly of section .text:
 08000204 <__main>:
 
 __main:
-    // Enable clock access to GPIOA and GPIOC
+    // Habilitar acceso al reloj para GPIOA y GPIOC
 
-    // Load address of RCC_AHB1ENR to r0
+    // Cargar la dirección de RCC_AHB1ENR en r0
     ldr r0, =RCC_AHB1ENR
  8000204:	483f      	ldr	r0, [pc, #252]	@ (8000304 <off+0xc>)
-    // Load value at address found in r0 into r1
+    // Cargar el valor en la dirección encontrada en r0 en r1
     ldr r1, [r0]
  8000206:	6801      	ldr	r1, [r0, #0]
-    // Enable clock for GPIOA and GPIOC
+    // Habilitar reloj para GPIOA y GPIOC
     orr r1, #GPIOA_EN
  8000208:	f041 0101 	orr.w	r1, r1, #1
     orr r1, #GPIOC_EN
  800020c:	f041 0104 	orr.w	r1, r1, #4
-    // Store content in r1 at address found in r0
+    // Almacenar el contenido en r1 en la dirección encontrada en r0
     str r1, [r0]
  8000210:	6001      	str	r1, [r0, #0]
 
-    // Set PA0, PA1, PA4, PA6, PA7, PA8, PA9 as output
-    // Load address of GPIOA_MODER to r0
+    // Configurar PA0, PA1, PA4, PA6, PA7, PA8, PA9 como salida
+    // Cargar la dirección de GPIOA_MODER en r0
     ldr r0, =GPIOA_MODER
  8000212:	483d      	ldr	r0, [pc, #244]	@ (8000308 <off+0x10>)
-    // Load value at address found in r0 into r1
+    // Cargar el valor en la dirección encontrada en r0 en r1
     ldr r1, [r0]
  8000214:	6801      	ldr	r1, [r0, #0]
-    // Set PA0 as output
+    // Configurar PA0 como salida
     orr r1, #MODERPA0_OUT
  8000216:	f041 0101 	orr.w	r1, r1, #1
-    // Set PA1 as output
+    // Configurar PA1 como salida
     orr r1, #MODERPA1_OUT
  800021a:	f041 0104 	orr.w	r1, r1, #4
-    // Set PA4 as output
+    // Configurar PA4 como salida
     orr r1, #MODERPA4_OUT
  800021e:	f441 7180 	orr.w	r1, r1, #256	@ 0x100
-    // Set PA6 as output
+    // Configurar PA6 como salida
     orr r1, #MODERPA6_OUT
  8000222:	f441 5180 	orr.w	r1, r1, #4096	@ 0x1000
-    // Set PA7 as output
+    // Configurar PA7 como salida
     orr r1, #MODERPA7_OUT
  8000226:	f441 4180 	orr.w	r1, r1, #16384	@ 0x4000
-    // Set PA8 as output
+    // Configurar PA8 como salida
     orr r1, #MODERPA8_OUT
  800022a:	f441 3180 	orr.w	r1, r1, #65536	@ 0x10000
-    // Set PA9 as output
+    // Configurar PA9 como salida
     orr r1, #MODERPA9_OUT
  800022e:	f441 2180 	orr.w	r1, r1, #262144	@ 0x40000
-    // Store content in r1 at address found in r0
+    // Almacenar el contenido en r1 en la dirección encontrada en r0
     str r1, [r0]
  8000232:	6001      	str	r1, [r0, #0]
 
-    // Set PC13 as input
-    // Load address of GPIOC_MODER to r0
+    // Configurar PC13 como entrada
+    // Cargar la dirección de GPIOC_MODER en r0
     ldr r0, =GPIOC_MODER
  8000234:	4835      	ldr	r0, [pc, #212]	@ (800030c <off+0x14>)
-    // Load value at address found in r0 into r1
+    // Cargar el valor en la dirección encontrada en r0 en r1
     ldr r1, [r0]
  8000236:	6801      	ldr	r1, [r0, #0]
-    // Clear bits to set PC13 as input
+    // Borrar bits para configurar PC13 como entrada
     BIC R1, R1, #(3 << 26)
  8000238:	f021 6140 	bic.w	r1, r1, #201326592	@ 0xc000000
-    // Store content in r1 at address found in r0
+    // Almacenar el contenido en r1 en la dirección encontrada en r0
     str r1, [r0]
  800023c:	6001      	str	r1, [r0, #0]
    // bl check_button
