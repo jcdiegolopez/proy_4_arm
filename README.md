@@ -14,7 +14,7 @@ Vector de interrupciones del dispositivo STM32F446RETx para el conjunto de herra
 - Configuración del SP inicial
 - Configuración del PC inicial == `Reset_Handler`
 - Configuración de las entradas de la tabla de vectores con las direcciones de las ISR de excepciones
-- Salto a la función principal en la biblioteca C (que eventualmente llama a `main()`).
+- Salto a la función principal en la el archivo main.s (que eventualmente llama a `__main`).
 
 ---
 
